@@ -1,5 +1,5 @@
 import '../styles/App.scss';
-import grogu from '../images/grogu.webp';
+//import grogu from '../images/grogu.webp';
 
 function App() {
   return (
