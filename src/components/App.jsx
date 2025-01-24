@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import '../styles/App.scss';
+import Header from './Header';
+import Board from './Board';
+import Grogu from './Grogu';
 //import grogu from '../images/grogu.webp';
+// setPositionGrogu(positionGrogu +1)
+//       setGameStatus("Grogu avanza una casilla")
+//     }else if (result === 2){
 
 function App() {
   //JS
@@ -11,32 +17,46 @@ function App() {
   const [eggs, setEggs] = useState(["🥚", "🥚", "🥚"]);
   const [frogs, setFrogs] = useState(["🐸", "🐸", "🐸"]);
   const [dice, setDice] = useState(null);
+  const [gameStatus, setGameStatus] = useState("En curso");
 
-  const handleClick = () => {
+  const rollDice = () => {
     const result = Math.ceil(Math.random() * 4);
     setDice(result);
     console.log(result)
+    if(result === 1 && cookies.length >= 0){
+      setCookies(cookies.slice(1))
+      setGameStatus("Has ayudado a Mando a recoger una galleta")
+
+      
+
+    }else if(result === 2 && eggs.leght >= 0){
+      setEggs(eggs.slice(1))
+      setGameStatus("Has ayudado a Mando a recoger un huevo")
+      
+    }else if(result === 3 && frogs.length >= 0){
+      setFrogs(frogs.slice(1))
+      setGameStatus("Has ayudado a Mando a recoger una rana")
+      
+    }else if(result === 4 && positionGrogu < 7){
+      setPositionGrogu(positionGrogu +1)
+      setGameStatus("Grogu avanza una casilla")
+      
+    }
   }
+
+  
 
   return (
     <>
-     <header>
-      <h1>¡Cuidado con Grogu!</h1>
-    </header>
+    <Header/>
+    
     <main className="page">
-      <section className="board">
-        <div className="cell"><div className="grogu">👣</div></div>
-        <div className="cell"></div>
-        <div className="cell"></div>
-        <div className="cell"></div>
-        <div className="cell"></div>
-        <div className="cell"></div>
-        <div className="cell"></div>
-      </section>
+      <Board/>
 
       <section>
-        <button className="dice" onClick={handleClick}>Lanzar Dado</button>
-        <div className="game-status">En curso</div>
+        <button className="dice" onClick={rollDice}>Lanzar Dado</button>
+       <p> El resultado del dado es: {dice}</p>
+        <div className="game-status">{gameStatus}</div>
       </section>
 
       <section className="goods-container">
