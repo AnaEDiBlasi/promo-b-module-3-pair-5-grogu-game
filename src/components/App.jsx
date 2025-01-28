@@ -105,7 +105,7 @@ function App() {
     <Header/>
     
     <main className="page">
-      <Board/>
+      <Board  positionGrogu = {positionGrogu}/>
 
       <Dice rollDice={rollDice} dice={dice} gameStatus={gameStatus}/>
 
