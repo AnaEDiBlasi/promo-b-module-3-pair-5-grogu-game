@@ -51,7 +51,7 @@ function App() {
   }
 
   function managePositionGrogu(positionGrogu) {
-    if(positionGrogu < 6 ) {
+    if(positionGrogu < 5 ) {
       setPositionGrogu(positionGrogu +1)
       setGameStatus("Grogu avanza una casilla")
     } else {
