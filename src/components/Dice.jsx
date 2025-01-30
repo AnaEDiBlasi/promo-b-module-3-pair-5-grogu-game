@@ -11,7 +11,7 @@ function Dice(props) {
     <section>
         <button className="dice" onClick={handleClick}>Lanzar Dado</button>
         <p> El resultado del dado es: {props.dice}</p>
-        <div className="game-status">{props.gameStatus}</div>
+        <div className="game-status">{props.name}{props.gameStatus}</div>
       </section>
   )
 }

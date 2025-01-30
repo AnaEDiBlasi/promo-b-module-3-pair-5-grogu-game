@@ -14,7 +14,7 @@ function Board({positionGrogu}) {
       
 
        {cellsHTML}
-      </section>
+    </section>
   )
 }
 

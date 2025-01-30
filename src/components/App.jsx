@@ -4,6 +4,7 @@ import Header from './Header';
 import Board from './Board';
 import Grogu from './Grogu';
 import Dice from './Dice';
+import Form from './Form';
 //import grogu from '../images/grogu.webp';
 // setPositionGrogu(positionGrogu +1)
 //       setGameStatus("Grogu avanza una casilla")
@@ -18,45 +19,45 @@ function App() {
   const [eggs, setEggs] = useState(["🥚", "🥚", "🥚"]);
   const [frogs, setFrogs] = useState(["🐸", "🐸", "🐸"]);
   const [dice, setDice] = useState(null);
-  const [gameStatus, setGameStatus] = useState("En curso");
+  const [gameStatus, setGameStatus] = useState(" el juego está en curso");
 
-
+  const [name, setName] = useState("");
   
 
   function manageCookies(cookies) {
     if(cookies.length > 0 ) {
       setCookies(cookies.slice(1))
-      setGameStatus("Has ayudado a Mando a recoger una galleta")
+      setGameStatus(" has ayudado a Mando a recoger una galleta")
     } else {
-      setGameStatus("No hay más galletas")
+      setGameStatus(" no hay más galletas")
     }
   }
 
   function manageEggs(eggs) {
     if(eggs.length > 0 ) {
       setEggs(eggs.slice(1))
-      setGameStatus("Has ayudado a Mando a recoger una huevo")
+      setGameStatus(" has ayudado a Mando a recoger una huevo")
     } else {
-      setGameStatus("No hay más huevos")
+      setGameStatus(" no hay más huevos")
     }
   }
 
   function manageFrogs(frogs) {
     if(frogs.length > 0 ) {
       setFrogs(frogs.slice(1))
-      setGameStatus("Has ayudado a Mando a recoger una rana")
+      setGameStatus(" has ayudado a Mando a recoger una rana")
     } else {
-      setGameStatus("No hay más ranas")
+      setGameStatus(" no hay más ranas")
     }
   }
 
   function managePositionGrogu(positionGrogu) {
     if(positionGrogu < 5 ) {
       setPositionGrogu(positionGrogu +1)
-      setGameStatus("Grogu avanza una casilla")
+      setGameStatus(" Grogu avanza una casilla")
     } else {
       setPositionGrogu(positionGrogu +1)
-      setGameStatus("Grogu ha llegado al final")
+      setGameStatus(" Grogu ha llegado al final")
     }
   }
 
@@ -107,7 +108,9 @@ function App() {
     <main className="page">
       <Board  positionGrogu = {positionGrogu}/>
 
-      <Dice rollDice={rollDice} dice={dice} gameStatus={gameStatus}/>
+      <Dice rollDice={rollDice} dice={dice} gameStatus={gameStatus} name={name}/>
+
+      <Form setName={setName}/>
 
       <section className="goods-container">
         <div className="goods-item">🍪</div>
