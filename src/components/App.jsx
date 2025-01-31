@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../styles/App.scss';
 import Header from './Header';
 import Board from './Board';
@@ -98,6 +98,14 @@ function App() {
       
     // }
   }
+
+
+  useEffect(() =>{
+    if (positionGrogu > 5 ){
+      setGameStatus(" ¡Grogu se ha comido el cargamento!! Has perdido")
+    }else if (cookies.length === 0 && eggs.length === 0 && frogs.length === 0 )
+      setGameStatus(" ganaste, Mando completa la misión")
+  },[positionGrogu, cookies, eggs, frogs])
 
   
 
