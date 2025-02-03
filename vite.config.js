@@ -9,5 +9,7 @@ export default defineConfig({
       usePolling: true,
     },
     open:true,
+
   },
+  base: "/promo-b-module-3-pair-5-grogu-game/"
 })
