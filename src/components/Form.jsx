@@ -1,6 +1,6 @@
 
 
-function Form({setName}) {
+function Form({setName, name}) {
 
   const handleChange = (ev) => {
     const value = ev.target.value;
@@ -10,7 +10,7 @@ function Form({setName}) {
   return (
     <form action="">
       <label htmlFor="name">Introduce el nombre: </label>
-      <input type="text" name="name" id="name" placeholder="Anacleta" onChange={handleChange}/>
+      <input type="text" name="name" id="name" placeholder="Anacleta" onChange={handleChange} value={name}/>
     </form>
   )
 }

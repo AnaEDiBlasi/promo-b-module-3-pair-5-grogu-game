@@ -9,6 +9,8 @@ import Footer from './Footer';
 import { Route, Routes } from 'react-router-dom';
 import Instructions from './Instructions';
 import Options from './Options';
+import Goods from './Goods';
+import RestartButton from './RestartButton';
 //import grogu from '../images/grogu.webp';
 // setPositionGrogu(positionGrogu +1)
 //       setGameStatus("Grogu avanza una casilla")
@@ -106,12 +108,21 @@ function App() {
 
   useEffect(() =>{
     if (positionGrogu > 5 ){
-      setGameStatus(" ¡Grogu se ha comido el cargamento!! Has perdido")
+      setGameStatus(" ¡¡Grogu se ha comido el cargamento!! Has perdido")
     }else if (cookies.length === 0 && eggs.length === 0 && frogs.length === 0 )
       setGameStatus(" ganaste, Mando completa la misión")
   },[positionGrogu, cookies, eggs, frogs])
 
   
+  const restartGame = () => {
+    setPositionGrogu(0);
+    setCookies(["🍪", "🍪", "🍪"]);
+    setEggs(["🥚", "🥚", "🥚"]);
+    setFrogs(["🐸", "🐸", "🐸"]);
+    setDice(null);
+    setGameStatus(" el juego está en curso");
+    setName("");
+  }
 
   return (
     <>
@@ -125,29 +136,13 @@ function App() {
           <>
           <Board  positionGrogu = {positionGrogu}/> 
           <Dice rollDice={rollDice} dice={dice} gameStatus={gameStatus} name={name}/>
-          <Form setName={setName}/>
-          <section className="goods-container">
-            <div className="goods-item">🍪</div>
-            <div className="goods-item">🍪</div>
-            <div className="goods-item">🍪</div>
-          </section>
-          <section className="goods-container">
-            <div className="goods-item">🥚</div>
-            <div className="goods-item">🥚</div>
-            <div className="goods-item">🥚</div>
-          </section>
-          <section className="goods-container">
-            <div className="goods-item">🐸</div>
-            <div className="goods-item">🐸</div>
-            <div className="goods-item">🐸</div>
-          </section>
-          <section>
-            <button className="restart-button">Reiniciar Juego</button>
-          </section>
+          <Form setName={setName} name={name}/>
+          <Goods cookies={cookies} eggs={eggs} frogs={frogs}/>   
+          <RestartButton restartGame={restartGame}/>
           </>
           }/>
       </Routes>
-  
+       
     </main>
     <Footer/>
     </>
